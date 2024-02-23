@@ -1,5 +1,5 @@
 import requests
-from errors import DomoAPIRequest_Error
+from .errors import DomoAPIRequest_Error
 
 def get_full_auth(
     domo_instance: str,
