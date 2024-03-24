@@ -1,10 +1,9 @@
 import requests
 
 
-def get_full_auth(
+def get_session_token(
     domo_instance: str, domo_username: str, domo_password: str, return_raw: bool = False
-) -> str:  # returns a session token
-    """use username and password to generate an access token"""
+) -> str:
 
     url = f"https://{domo_instance}.domo.com/api/content/v2/authentication"
 
@@ -17,6 +16,7 @@ def get_full_auth(
     res = requests.request(method="POST", url=url, json=body, verify=False)
 
     data = res.json()
+
     if return_raw:
         return res
 
@@ -24,5 +24,8 @@ def get_full_auth(
         raise Exception(data["message"])
 
     token = data.get("sessionToken")
+
+    if not token:
+        raise Exception("No token returned from API")
 
     return token

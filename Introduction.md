@@ -90,7 +90,7 @@ Upon completing this course learners should be able to:
 
 ### Tutorial 4- Access Token Authentication and updating Domo via API
 
-- update an object in Domo
+- generate an access_token and update an Account Object in Domo
 
 ### 1545 - Q&A Wrapup
 

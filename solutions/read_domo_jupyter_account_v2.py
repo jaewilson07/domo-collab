@@ -14,4 +14,6 @@ def read_domo_jupyter_account(account_name, is_abstract: bool = False):
     if not is_abstract:
         return creds
 
-    return json.loads(creds["credentials"])
+    return json.loads(
+        creds["credentials"]
+    )  # converts credentials string into a dictionary
