@@ -48,15 +48,25 @@ Upon completing this course learners should be able to:
   - File Share
     <br>
 
-- **Jupyter Workspaces Setup**
-  - ▶️Login at [domo-training-jupyter](https://domo-training-jupyter.domo.com) OR [domo-community](http://domo-community.domo.com) -- if you need to be domo'ed to the community instance let the TAs know.
-  - ▶️ Spin up a Jupyter Workspace
-  - ▶️ Clone [GitHub repo](https://github.com/jaewilson07/domopalooza-24.git) via terminal
-  
-      ```
-      git clone https://github.com/jaewilson07/domopalooza-24.git
-      ``` 
-   <br>
+**Jupyter Workspaces Setup**
+
+- ▶️Login at [domo-training-jupyter](https://domo-training-jupyter.domo.com) OR [domo-community](http://domo-community.domo.com)
+
+  - if you need to be domo'ed to the community instance let the TAs know.
+
+- for training-jupyter:
+
+  - username <youremailprefix>@domosftware.net
+  - password Training!
+
+- ▶️ Spin up a Jupyter Workspace
+- ▶️ Clone [GitHub repo](https://github.com/jaewilson07/domopalooza-24.git) via terminal
+
+  ```
+  git clone https://github.com/jaewilson07/domopalooza-24.git
+  ```
+
+  <br>
 
 #### Tutorial 1 - Authentication in Domo
 
