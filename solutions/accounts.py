@@ -16,19 +16,23 @@ def get_accounts(
     domo_instance,
     headers: dict = None,
     session_token: str = None,
+    access_token : str = None,
     debug_api: bool = False,
     return_raw: bool = False,
 ) -> ResponseClass:
 
+    url = f"https://{domo_instance}.domo.com/api/data/v2/datasources/providers"
+    
     headers = headers or {}
 
     if session_token:
         headers.update({"x-domo-authentication": session_token})
-
-    url = f"https://{domo_instance}.domo.com/api/data/v2/datasources/providers"
+        
+    if access_token:
+        headers.update({"x-domo-developer-token": access_token})
 
     if debug_api:
-        print({"headers": headers, "url": url})
+        print({"url": url, "headers": headers})
 
     res = requests.request(method="GET", url=url, headers=headers)
 
@@ -51,41 +55,27 @@ def get_accounts(
 
     return res
 
-
-def get_accounts_v2(domo_instance, session_token, debug_api: bool = False):
-
-    url = f"https://{domo_instance}.domo.com/api/data/v1/accounts"
-
-    headers = {"x-domo-authentication": session_token}
-
-    if debug_api:
-        pprint({"url": url, "headers": headers})
-
-    res = requests.request(method="GET", url=url, headers=headers)
-
-    res = ResponseClass.from_request_response(res)
-
-    if not res.is_success:
-        raise DomoAPIRequest_Error(get_accounts_v2.__name__, res)
-
-    return res
-
-
 def get_account_by_id(
     domo_instance,
     account_id,
-    session_token=None,
-    headers=None,
+    headers : dict=None,
+    session_token : str =None,
+    access_token: str = None,
     return_raw: bool = False,
     debug_api: bool = False,
 ):
     url = f"https://{domo_instance}.domo.com/api/data/v1/accounts/{account_id}?unmask=true"
 
     headers = headers or {}
-    headers.update({"x-domo-authentication": session_token})
+
+    if session_token:
+        headers.update({"x-domo-authentication": session_token})
+        
+    if access_token:
+        headers.update({"x-domo-developer-token": access_token})
 
     if debug_api:
-        pprint({"url": url, "headers": headers})
+        print({"url": url, "headers": headers})
 
     res = requests.request(method="GET", url=url, headers=headers)
 
@@ -130,13 +120,24 @@ def generate_account__access_token_body(
     }
 
 
-def create_account(body, domo_instance, session_token, debug_api: bool = False):
+def create_account(body, 
+                   domo_instance, 
+                   headers = None,
+                   session_token = None,
+                   access_token = None,
+                   debug_api: bool = False):
     url = f"https://{domo_instance}.domo.com/api/data/v1/accounts"
 
-    headers = {"x-domo-authentication": session_token}
+    headers = headers or {}
+
+    if session_token:
+        headers.update({"x-domo-authentication": session_token})
+        
+    if access_token:
+        headers.update({"x-domo-developer-token": access_token})
 
     if debug_api:
-        pprint({"url": url, "headers": headers})
+        print({"url": url, "headers": headers, "body": body})
 
     res = requests.request(method="POST", url=url, json=body, headers=headers)
 
@@ -153,6 +154,7 @@ def update_account_name(
     account_id: int,
     account_name: str,
     session_token=None,
+    access_token = None,
     headers: dict = None,
     debug_api: bool = False,
     return_raw: bool = False,
@@ -160,7 +162,12 @@ def update_account_name(
     url = f"https://{domo_instance}.domo.com/api/data/v1/accounts/{account_id}/name"
 
     headers = headers or {}
-    headers.update({"x-domo-authentication": session_token})
+
+    if session_token:
+        headers.update({"x-domo-authentication": session_token})
+        
+    if access_token:
+        headers.update({"x-domo-developer-token": access_token})
 
     if debug_api:
         pprint({"url": url, "headers": headers, "body": account_name})
@@ -182,13 +189,19 @@ def update_account_config(
     body: dict,  # only receives configuration portion of the account definition
     headers: dict = None,
     session_token: str = None,
+    access_token : str = None,
     debug_api: bool = False,
     return_raw: bool = False,
 ):
     url = f"https://{domo_instance}.domo.com/api/data/v1/providers/{dataprovider_type}/account/{account_id}"
 
     headers = headers or {}
-    headers.update({"x-domo-authentication": session_token})
+
+    if session_token:
+        headers.update({"x-domo-authentication": session_token})
+        
+    if access_token:
+        headers.update({"x-domo-developer-token": access_token})
 
     if debug_api:
         pprint({"url": url, "headers": headers, "body": body})

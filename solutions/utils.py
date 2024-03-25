@@ -1,26 +1,26 @@
 from typing import List, Any
 
-# import domojupyter as dj
+import domojupyter as dj
 import json
 import re
 import datetime as dt
 import time
 
-# def read_domo_jupyter_account(account_name, is_abstract: bool = False):
+def read_domo_jupyter_account(account_name, is_abstract: bool = False):
 
-#     account_properties = dj.get_account_property_keys(account_name)
+    account_properties = dj.get_account_property_keys(account_name)
 
-#     creds = {
-#         prop: dj.get_account_property_value(account_name, prop)
-#         for prop in account_properties
-#     }
+    creds = {
+        prop: dj.get_account_property_value(account_name, prop)
+        for prop in account_properties
+    }
 
-#     if not is_abstract:
-#         return creds
+    if not is_abstract:
+        return creds
 
-#     return json.loads(
-#         creds["credentials"]
-#     )  # converts credentials string into a dictionary
+    return json.loads(
+        creds["credentials"]
+    )  # converts credentials string into a dictionary
 
 
 def flatten_list_of_lists(list_of_lists) -> List[Any]:

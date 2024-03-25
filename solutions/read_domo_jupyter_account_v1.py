@@ -1,4 +1,4 @@
-import domojupyer as dj
+import domojupyter as dj
 
 
 def read_domo_jupyter_account(account_name):

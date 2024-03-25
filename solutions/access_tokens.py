@@ -10,8 +10,9 @@ from pprint import pprint
 
 def get_all_access_tokens(
     domo_instance,
-    session_token=None,
-    headers=None,
+    session_token: str=None,
+    access_token: str = None,
+    headers : dict =None,
     return_raw: bool = False,
     debug_api: bool = False,
 ):
@@ -22,6 +23,9 @@ def get_all_access_tokens(
 
     if session_token:
         headers.update({"x-domo-authentication": session_token})
+        
+    if access_token:
+        headers.update({"x-domo-developer-token": access_token})
 
     if debug_api:
         print({"url": url, "headers": headers})
@@ -51,6 +55,7 @@ def generate_access_token(
     user_id,
     duration_in_days: 15,
     session_token=None,
+    access_token = None,
     headers=None,
     return_raw: bool = False,
     debug_api: bool = False,
@@ -67,10 +72,13 @@ def generate_access_token(
 
     if session_token:
         headers.update({"x-domo-authentication": session_token})
+        
+    if access_token:
+        headers.update({"x-domo-developer-token": access_token})
 
     if debug_api:
-        pprint({"url": url, "headers": headers, "body": body})
-
+        print({"url": url, "headers": headers, "body": body})
+        
     res = requests.request(method="post", url=url, json=body, headers=headers)
 
     res = ResponseClass.from_request_response(res)
@@ -83,8 +91,9 @@ def generate_access_token(
 def revoke_access_token(
     domo_instance,
     access_token_id,
-    session_token=None,
-    headers=None,
+    session_token : str=None,
+    access_token: str = None,
+    headers: dict =None,
     return_raw: bool = False,
     debug_api: bool = False,
 ):

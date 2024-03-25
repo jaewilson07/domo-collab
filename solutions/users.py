@@ -5,8 +5,9 @@ from solutions.client import ResponseClass
 def get_user_by_id(
     domo_instance,
     user_id: int,
-    session_token=None,
-    headers=None,
+    session_token: str=None,
+    access_token:str = None, 
+    headers: dict=None,
     return_raw: bool = False,
     debug_api: bool = False,
 ):
@@ -16,10 +17,13 @@ def get_user_by_id(
 
     if session_token:
         headers.update({"x-domo-authentication": session_token})
+        
+    if access_token:
+        headers.update({"x-domo-developer-token": access_token})
 
     if debug_api:
         print({"url": url, "headers": headers})
-
+        
     res = requests.request(
         url=url,
         method="GET",
