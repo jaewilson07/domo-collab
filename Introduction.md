@@ -37,7 +37,6 @@ Upon completing this course learners should be able to:
 #### 1300 - Introduction & Workspaces Setup
 
 - Introductions & Objectives
-  <br>
 - Jupyter and Domo
 - Where is Jupyter located in Domo?
 - Workspace Configuration
@@ -50,10 +49,14 @@ Upon completing this course learners should be able to:
     <br>
 
 - **Jupyter Workspaces Setup**
-  - ▶️Login at [domo-training-jupyter](https://domo-training-jupyter.domo.com) OR [domo-community](http://domo-community.domo.com) -- if you need to be domo'ed to community let the TAs know.
-  - ▶️ Spin up a Workspace
+  - ▶️Login at [domo-training-jupyter](https://domo-training-jupyter.domo.com) OR [domo-community](http://domo-community.domo.com) -- if you need to be domo'ed to the community instance let the TAs know.
+  - ▶️ Spin up a Jupyter Workspace
   - ▶️ Clone [GitHub repo](https://github.com/jaewilson07/domopalooza-24.git) via terminal
-    <br>
+  
+      ```
+      git clone https://github.com/jaewilson07/domopalooza-24.git
+      ``` 
+   <br>
 
 #### Tutorial 1 - Authentication in Domo
 
@@ -75,7 +78,7 @@ Upon completing this course learners should be able to:
   - Reading and Writing to a Dataset
   - Getting Account Credentials
 
-#### Tutorial 2 & Break - Working with Objects & Domo Integration
+#### Tutorial 2 & Break - Workspace Management, Working with Accounts & Domo Integration
 
 - Read Account Objects in Jupyter Workspaces
 - Export a dataframe to a Domo Dataset
