@@ -32,28 +32,30 @@ Upon completing this course learners should be able to:
 
 ---
 
-### 1300 - Welcome and Introduction to Jupyter
+### Welcome and Introduction to Jupyter
 
-**Introduction**
+#### 1300 - Introduction & Workspaces Setup
 
+- Introductions & Objectives
+  <br>
 - Jupyter and Domo
 - Where is Jupyter located in Domo?
-
-**Jupyter Workspaces Setup**
-
-- Creating a new Workspace
-
-- ▶️ Spin up a Workspace
-- ▶️ Clone [GitHub repo](https://github.com/jaewilson07/domopalooza-24.git)
-  <br>
 - Workspace Configuration
 - Optional Configuration Steps
+
   - Input Datasets
   - Output Datasets
   - Accounts
   - File Share
+    <br>
 
-### Tutorial 1 - Authentication in Domo
+- **Jupyter Workspaces Setup**
+  - ▶️Login at [domo-training-jupyter](https://domo-training-jupyter.domo.com) OR [domo-community](http://domo-community.domo.com) -- if you need to be domo'ed to community let the TAs know.
+  - ▶️ Spin up a Workspace
+  - ▶️ Clone [GitHub repo](https://github.com/jaewilson07/domopalooza-24.git) via terminal
+    <br>
+
+#### Tutorial 1 - Authentication in Domo
 
 - API request basics
 - token-based authentication
@@ -61,7 +63,7 @@ Upon completing this course learners should be able to:
 
 ### 1400 - Workspace Management
 
-- Changing Ownership
+- Changing Workspace Ownership
 - Enabling Sharing and Sharing a Workspace
   <br>
 - ▶️ Create a "DomoAccessToken" and "Abstract Credentials Store" account containing userame & password. Share w. JupyerWorkspace
@@ -73,7 +75,7 @@ Upon completing this course learners should be able to:
   - Reading and Writing to a Dataset
   - Getting Account Credentials
 
-### Tutorial 2 - Working with Objects & Domo Integration
+#### Tutorial 2 & Break - Working with Objects & Domo Integration
 
 - Read Account Objects in Jupyter Workspaces
 - Export a dataframe to a Domo Dataset
@@ -83,15 +85,17 @@ Upon completing this course learners should be able to:
 - Trigger from Dataset
 - Trigger on Schedule
 
-### Tutorial 3 - Generate a DomoStats style dataset
+#### Tutorial 3 - Generate a DomoStats style dataset
 
 - Get Accounts from DomoAccounts and format as a dataset
 - Merging API requests in a dataset
 
-### Tutorial 4- Access Token Authentication and updating Domo via API
+#### Tutorial 4 - (EXTRA) Access Token Authentication and updating Domo via API
 
 - generate an access_token and update an Account Object in Domo
 
 ### 1545 - Q&A Wrapup
 
 - Common Use Cases
+- Q&A
+- [End of course Survey Link](https://domo.az1.qualtrics.com/jfe/form/SV_6QjzvNqLHyuDcai)
