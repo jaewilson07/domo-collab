@@ -1,51 +1,102 @@
-Domo API and Authentication Tutorials 📊🔐
-==============
+## Introduction
 
-This repo contains a set of Jupyter notebooks designed to guide you through various aspects of working with the Domo API. Each tutorial builds upon the previous, providing an intuitive learning path.
+Recently, several high profile projects have gone live with Custom Apps and DDX bricks which bring a whole new set of governance and maintenance questions and concerns, to say nothing of the recent release of App Studio.
 
-# Getting Started 🚀
+We are looking at the option of bringing Noah Finberg to London to conduct workshops and brainstorming / solution design sessions on how we might leverage CodeEngine, Workflows, Custom Apps and App Studio in our environment.
 
-Before diving into the tutorials, ensure you have cloned this repository into your Jupyter environment. You can do so by opening a new Terminal in Jupyter and running the following command:
+### General Topics of Interest
 
-```bash
-git clone https://github.com/jaewilson07/domopalooza-24.git
-```
+Custom Apps and DDX bricks
+Guidelines and best practices
+Guidelines for custom app development in Publish framework
+Custom landing pages in distribution center
 
-For more details on cloning repositories, visit [Creating and Managing Repositories from GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+CodeEngine and Workflows
+Custom apps calling Code Engine/workflows
+Call “undocumented” APIs from DDX/Custom Apps
+Use service account (impersonalization)
+AppDB usage for configuration storage
 
-# Tutorial Overview 📚
+## Tentative Agenda
 
-## Tutorial 1: Authentication in Domo ⬅️ *Start Here*
+Notes from Users -
 
-- **What you'll learn**: How to authenticate API requests in Domo using username and password to generate a token. This tutorial covers the basics of Domo's authentication.
-- **Key Concepts**: API request basics, token-based authentication, network monitoring for API discovery.
+- Before 30th (Jordan Atkins)
 
-## Tutorial 2: Working with Objects & Domo Integration
+**Monday - 27 - Travel Day**
+**Tuesday - 28**
 
-- **What you'll learn**: Using Account Objects and Datasets in DomoJupyter.
-- **Key Concepts**: Sending API requests, function abstraction for reusability, full authentication vs. developer_token authentication.
+- Noah recovery
+  - JW + OZ @ SIE - planning
+  - Evening - a Cheeky Nandos
 
-## Tutorial 3: Generate a DomoStats Style Dataset
+**Wednesday - 29**
 
-- **What you'll learn**: Steps to create and structure a dataset in the style of DomoStats, including data retrieval and storage practices.
-- **Key Concepts**: Dataset creation and structuring, more access token authentication nuances, data management in Domo.
+- Morning
 
-## Tutorial 4: Using Access Token Authentication and Updating Domo via API
+  - JW + JT + JZ
+  - Noah @Domo EMEA
 
-- **What you'll learn**: Advanced techniques for using access tokens for authentication and methods for updating datasets within Domo through the API.
-- **Key Concepts**: Secure credential storage, dataset updating, abstract account management for token storage.
+- Afternoon
+  - Session 1: Just CodeEngine
+- Evening > Ramen (Tokontsu / Big Daddy)
 
-## Helpful Links 🌐
+**Thursday - 30**
 
-- [Domo Developer Portal](https://developer.domo.com/portal/8ba9aedad3679-ap-is)
-- [Domo Community Forums](https://community-forums.domo.com/main) 
-- [Domo KB Jupyter Basics](https://domo-support.domo.com/s/article/36004740075?language=en_US#jupyter_basics)
+- Morning
+  - Session 2: Basic Personalization with Apps (landing page)
+- Afternoon
+  - Session 3: App +CodeEngine
+  - Solutioning / Workshops / Office Hours
 
+**Friday - 31**
 
-## ✨ Jae Wilsons Treasure Trove 🗺️
+- Office Hours
 
-- [👥 Unofficial Domo Community Slack](https://domousergroup.carrd.co/) 
-- [🐍 Python domolibrary](https://github.com/jaewilson07/domolibrary) and [Code Samples](https://github.com/jaewilson07/domolibrary/tree/main/nbs/blog/posts)
-- [📧 Postman Collection](https://documenter.getpostman.com/view/5049119/UyxbppB2)
-- [▶️ YouTube Channel](https://www.youtube.com/@datacrew)
-- [📰 DataCrew](https://datacrew.circle.so/getting-started)
+- Afternoon
+  - Travel home
+
+## Session 1 - Basic CodeEngine (add a user to a Group)
+
+Correct way to handle authentication (in codeengine) // can we SUDO handle modify group membership?
+
+## Session 2 - Basic Personalization with Apps (landing page)
+
+Use Case: “You have access to 100 dashboards, how do you see the ‘most important ones’
+
+- Most important one changes per user
+- Most important one can change based on time of year // a new incident
+
+Fun Challenges
+
+- Mapping names to entity_ids that might change (because publish) -- use API > Publish > Subscriber > Details
+- Generate Navigation Components (button to a dashboard) in javascript
+
+- Introduces best practices > using other parts of Domo
+  - Read a Dataset - PDP vs Filter Query?
+
+https://github.com/jaewilson07/datacrew/tree/main/ddx_bricks/jaewilson07/personalization
+
+Question
+
+- Can you dynamically restructure a dashboard?
+- Can you pass filters into an embed link (an dashboard in an iframe)
+
+## Session 3 - Using Apps + CodeEngine (sharing content)
+
+Use Case - build an app that allows content managers to monitor and share content with users
+
+Tutorial Outline
+
+- DDX > consolelog list of pages I am owner of
+- construct a Drop down > (actionHandler) > select a page
+
+- Print group membership
+- Add an Input (add user) > submit > submitHandler
+- Modify group membership // this will require CodeEngine
+
+## Overarching Themes
+
+- How does it deploy with cross-instance(from dev to prod)using (codeegine & appdb )
+- What happens if i publish multiple instances of a card that should point to the same appdb collection
+- Keep in mind most users are not ‘admins’
