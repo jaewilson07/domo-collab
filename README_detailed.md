@@ -37,6 +37,10 @@ Notes from Users -
   - JW + JT + JZ
   - Noah @Domo EMEA
 
+- 11:00 - 11:30 - Femi / D2C (support in migrating a dashboard to.
+
+  - https://playstation-d2c.domo.com/page/1424939153 and its subpages)
+
 - Afternoon
   - Session 1: Just CodeEngine
 - Evening > Ramen (Tokontsu / Big Daddy)
@@ -50,6 +54,8 @@ Notes from Users -
   - Solutioning / Workshops / Office Hours
 
 **Friday - 31**
+
+- Code Review Process (morning)
 
 - Office Hours
 
