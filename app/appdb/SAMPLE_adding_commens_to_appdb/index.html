@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="app.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body onload="loadData()">
+    <div class="header">ReturnFlow</div>
+    <div class="bodyContainer">
+      <!-- Returns Header -->
+      <ul class="list-group">
+        <li class="list-group-item" style="border-bottom: 2px solid black">
+          <div class="itemContainer">
+            <label>Store Number</label>
+            <label>Customer Name</label>
+            <label>Product</label>
+            <label>Return Reason</label>
+            <label>Comments</label>
+          </div>
+        </li>
+      </ul>
+      <!-- List of Returns -->
+      <ul class="list-group" id="returns"></ul>
+    </div>
+
+    <!-- domo.js optional utils -->
+    <script src="domo.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

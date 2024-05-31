@@ -1,0 +1,37 @@
+{
+    "name": "code_engine",
+    "version": "1.0.0",
+    "size": {
+        "width": 5,
+        "height": 3
+    },
+    "mapping": [],
+    "packageMapping": [
+        {
+            "alias": "getPages",
+            "parameters": [
+                {
+                    "alias": "instance",
+                    "type": "text",
+                    "nullable": false,
+                    "isList": false,
+                    "children": null
+                },
+                {
+                    "alias": "account",
+                    "type": "text",
+                    "nullable": false,
+                    "isList": false,
+                    "children": null
+                }
+            ],
+            "output": {
+                "alias": "response",
+                "type": "list",
+                "children": null
+            }
+        }
+    ],
+    "fileName": "manifest.json",
+    "id": "e54e487b-aae9-48d0-b932-a697f5ac305f"
+}

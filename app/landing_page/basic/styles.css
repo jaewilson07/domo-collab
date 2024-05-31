@@ -1,0 +1,17 @@
+#myDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(121, 64, 161, 1) 0%,
+    rgba(228, 88, 80, 1) 50%,
+    rgba(251, 141, 52, 1) 100%
+  );
+  height: calc(100vh);
+}
+
+h1 {
+  color: white;
+}
