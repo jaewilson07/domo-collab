@@ -1,0 +1,39 @@
+h1 {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.video-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+#header_div {
+    position: absolute;
+    color: #FFFFFF;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .video-container iframe {
+        height: 56.25vw;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .video-container iframe {
+        width: 177.78vh;
+    }
+}
