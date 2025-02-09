@@ -95,26 +95,16 @@ class EndpointHandler:
 
     
     def llm_describe_dataflow(self,
-                              dataflow_id,
+                              data,
                               messages : Messages = None, 
                               debug_api : bool = False, 
                               return_raw : bool = False):
         
-        res = dataflow_routes.get_dataflow_by_id_sync(
-            auth = self.auth,
-            dataflow_id = dataflow_id,
-            debug_api = debug_api
-        )
         
-        data = dfm.llm_dataflow_process_definition(res)
+        messages = messages or dfm.generate_llm_messages()
         
-        messages = dfm.generate_llm_messages()
-        
-        messages.add_message(f"""
-        describe the following JSON transformation steps in plain english: {data}.
-        Limit your response to 300 words""")
-        
-        res=  self.invoke_message(
+        res= self.invoke_message(
+            data = data,
             messages = messages,
             debug_api = debug_api,
             return_raw = return_raw
@@ -123,5 +113,5 @@ class EndpointHandler:
         if return_raw:
             return res
         
-        return messages        
+        return messages
         

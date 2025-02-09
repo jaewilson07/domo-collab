@@ -3,8 +3,6 @@ import routes.client as client
 import domolibrary.client.ResponseGetData as rgd
 import domolibrary.client.DomoAuth as dmda
 
-import datetime as dt
-
 from typing import List
 
 
@@ -12,7 +10,6 @@ def get_dataflow_by_id_sync(
     auth: dmda.DomoAuth,
     dataflow_id: int,
     debug_api: bool = False,
-    
 ) -> rgd.ResponseGetData:
     url = f"https://{auth.domo_instance}.domo.com/api/dataprocessing/v1/dataflows/{dataflow_id}"     
     
@@ -20,39 +17,6 @@ def get_dataflow_by_id_sync(
         auth=auth,
         url=url,
         method="GET",
-        debug_api=debug_api
-    )     
-    
-    if not res.is_success:        
-        raise dmde.DomoError(res.response)     
-    
-    return res
-
-def generate_update_dataflow_body(obj: dict, name = None, description = None, **kwargs):
-    
-    if name:
-        obj.update({'name' : name})
-    
-    if kwargs:
-        obj.update({**kwargs})
-        
-    obj.update({'description': description or obj.get('description') or  f'updated via API - {dt.datetime.now().strftime("%Y-%m-%d %H:%M")}'})
-    
-    return obj
-
-def update_dataflow_by_id_sync(
-    auth: dmda.DomoAuth,
-    dataflow_id: int,
-    dataflow_body : dict,
-    debug_api: bool = False,
-) -> rgd.ResponseGetData:
-    url = f"https://{auth.domo_instance}.domo.com/api/dataprocessing/v1/dataflows/{dataflow_id}"     
-    
-    res= client.get_data_sync(
-        auth=auth,
-        url=url,
-        body = dataflow_body,
-        method="put",
         debug_api=debug_api
     )     
     
