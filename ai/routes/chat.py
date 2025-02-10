@@ -3,13 +3,19 @@ import domolibrary.client.DomoError as dmde
 import routes.client as client
 
 
-def generate_chat_body(text_input : str, model = "domo.domo_ai.domogpt-chat-medium-v1.1:anthropic") :
+
+
+def generate_chat_body(text_input : str, 
+                       model = "domo.domo_ai.domogpt-chat-medium-v1.1:anthropic"
+):
+
     return {"input":text_input,
             "promptTemplate":{"template":"${input}"},
             "model":model}
 
-def chat_route_sync(prompt,
+def chat_route_sync(text_input,
                     auth: dmda.DomoAuth, 
+                    chat_body : dict = None,
                     debug_api : bool = False, 
                     parent_class : str = None,
                     debug_num_stacks_to_drop = 1, 
@@ -18,7 +24,7 @@ def chat_route_sync(prompt,
     
     url = f'https://{auth.domo_instance}.domo.com/api/ai/v1/text/generation'
     
-    body = generate_chat_body(text_input = prompt)
+    body = chat_body or generate_chat_body(text_input = text_input)
         
     res = client.get_data_sync(
         auth = auth, 
@@ -37,3 +43,6 @@ def chat_route_sync(prompt,
     res.response['output'] = res.response['choices'][0]['output']
 
     return res
+
+
+

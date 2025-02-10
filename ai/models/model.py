@@ -39,7 +39,7 @@ class EndpointHandler:
             # domo_username = creds['username'],
             # domo_password=  creds['password'],
             domo_access_token=creds["domoAccessToken"],
-            domo_instance= dxdj.which_environment(),
+            domo_instance= domo_instance,
         )
     
     @classmethod
@@ -62,7 +62,7 @@ class EndpointHandler:
         data = messages.generate_context(text_input= data)
 
         res = chat_routes.chat_route_sync(
-            auth=self.auth, return_raw=return_raw, debug_api=debug_api, prompt=data
+            auth=self.auth, return_raw=return_raw, debug_api=debug_api, text_input = data
         )
         
         messages.messages.append(Message("SYSTEM", res.response["output"]))
@@ -83,7 +83,7 @@ class EndpointHandler:
         data = messages.generate_context(text_input= data)
 
         res = chat_routes.chat_route_sync(
-            auth=self.auth, return_raw=return_raw, debug_api=debug_api, prompt=data
+            auth=self.auth, return_raw=return_raw, debug_api=debug_api, text_input=data
         )
 
         if return_raw: 
@@ -112,5 +112,5 @@ class EndpointHandler:
             auth=self.auth,
             return_raw=return_raw,
             debug_api=debug_api,
-            prompt=data
+            text_input=data
         )
