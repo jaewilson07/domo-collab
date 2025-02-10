@@ -11,6 +11,7 @@ import routes.chat as chat_routes
 import routes.dataflow as dataflow_routes
 
 import json
+from typing import List
 
 
 class EndpointHandler:
@@ -92,26 +93,24 @@ class EndpointHandler:
 
         return messages
     
+    def chat(
+        self,
+        message: str = None,
+        history: List[str] = None,
+        debug_api: bool = False,
+        return_raw: bool = False,
+        
+    ) -> Messages:
 
-    
-    def llm_describe_dataflow(self,
-                              data,
-                              messages : Messages = None, 
-                              debug_api : bool = False, 
-                              return_raw : bool = False):
+        data = f"""
+        chat_history: {history}
         
-        
-        messages = messages or dfm.generate_llm_messages()
-        
-        res= self.invoke_message(
-            data = data,
-            messages = messages,
-            debug_api = debug_api,
-            return_raw = return_raw
+        input: {message }
+        """
+
+        return chat_routes.chat_route_sync(
+            auth=self.auth,
+            return_raw=return_raw,
+            debug_api=debug_api,
+            prompt=data
         )
-        
-        if return_raw:
-            return res
-        
-        return messages
-        

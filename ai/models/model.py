@@ -11,6 +11,7 @@ import routes.chat as chat_routes
 import routes.dataflow as dataflow_routes
 
 import json
+from typing import List
 
 
 class EndpointHandler:
@@ -91,3 +92,25 @@ class EndpointHandler:
         messages.messages.append(Message("SYSTEM", res.response["output"]))
 
         return messages
+    
+    def chat(
+        self,
+        message: str = None,
+        history: List[str] = None,
+        debug_api: bool = False,
+        return_raw: bool = False,
+        
+    ) -> Messages:
+
+        data = f"""
+        chat_history: {history}
+        
+        input: {message }
+        """
+
+        return chat_routes.chat_route_sync(
+            auth=self.auth,
+            return_raw=return_raw,
+            debug_api=debug_api,
+            prompt=data
+        )

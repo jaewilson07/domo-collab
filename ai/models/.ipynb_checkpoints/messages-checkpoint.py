@@ -3,14 +3,14 @@ from typing import List
 
 @dataclass
 class Message:
-    type: str
-    message : str
+    role: str
+    content : str
     
     def to_json(self):
-        return {"user":  self.type, "message":  self.message}
+        return {"role":  self.role, "content":  self.content}
     
     def generate_context(self):
-        return f"{self.type} : {self.message}"
+        return f"{self.role} : {self.content}"
 
 @dataclass
 class Messages:
@@ -34,3 +34,6 @@ class Messages:
             self.add_message(Message("USER" , text_input))
         
         return "\n".join([msg.generate_context() for msg in self.messages])
+
+    def to_json(self):
+        return [msg.to_json() for msg in self.messages]
