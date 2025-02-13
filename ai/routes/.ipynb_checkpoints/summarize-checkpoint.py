@@ -15,7 +15,7 @@ def generate_summarize_body(text_input : str,
     return {"input":text_input,
             "system":system_prompt,
             "promptTemplate":{
-            "template": f"Write a {summary_length} summary of the following text {output_style}. ```{text_input}``` CONCISE SUMMARY:",
+            "template": system_prompt or f"Write a {summary_length} summary of the following text {output_style}. ```{text_input}``` CONCISE SUMMARY:",
                 #"template":f"rewrite the following text ```{text_input}```s as a {output_style} {summary_length} ",
             },
             "model":model,
@@ -34,6 +34,7 @@ class OutputStyleEnum(Enum):
 def summarize_route_sync(
     text_input : str,
     auth: dmda.DomoAuth, 
+    system_prompt: str = None,
     summary_length : int = 100,
     output_style: OutputStyleEnum = OutputStyleEnum.BULLETED,
     summary_body : dict = None,
@@ -45,6 +46,7 @@ def summarize_route_sync(
     url = f'https://{auth.domo_instance}.domo.com/api/ai/v1/text/summarize'
     
     body = summary_body or generate_summarize_body(text_input = text_input,
+                                                   system_prompt=system_prompt,
                                                    output_style = output_style, 
                                                    summary_length = summary_length)
         
