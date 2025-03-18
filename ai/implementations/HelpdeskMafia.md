@@ -29,8 +29,12 @@ Python script
   * send response to slack
 
 ## QueryIndex  
+
+FindKB Article // AI Agent Task
+```
 Instructions Prompt \= """  
 Please identify the top 10 paragraphs from the vectorDB and then attempt to answer the user's question from the source information only.  
 If you don't get a good answer on the first try, you can expand the search space (number of paragraphs to looks at) and try different more descriptive variations of the users question.  
 Can you summarize your response to under 200 characters. Please ensure that you include the attempted answer and any relevant urls from the knowledge base that you used to come up with the response.  
 Please then reply to the slack channel based on the provided channelId and timestamp.  
+` `
