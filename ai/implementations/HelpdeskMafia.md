@@ -28,8 +28,7 @@ Python script
   * summarize response using LLM with nodes as context (AI Agent)  
   * send response to slack
 
-## QueryIndex  
-
+### QueryIndex  
 FindKB Article // AI Agent Task
 ```
 Instructions Prompt \= """  
