@@ -1,5 +1,9 @@
 # How we build Helpdesk Mafia
 
+Features Used
+- VectorDB 
+- AI Agent Task [Domo KB](https://domo-support.domo.com/s/article/000005720?language=en_US)
+
 ## Scrape domo KBs to produce a Dataset
 Python script
 
